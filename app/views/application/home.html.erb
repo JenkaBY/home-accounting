@@ -1,1 +1,7 @@
-<h1>Hello</h1>
+<div class="text-center">
+  <h1>Welcome to the Home Accounting</h1>
+  <p>Some text should be here</p>
+<% unless current_user %>
+  <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-primary" %>
+      <% end %>
+</div>
