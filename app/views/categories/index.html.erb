@@ -1,0 +1,25 @@
+<h1>Your Categories</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |category| %>
+      <tr>
+        <td><%= Type.find(category.type_id).title %></td>
+        <td><%= category.title %></td>
+        <td>
+          <%= link_to 'Remove', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= render 'categories/new' %>
