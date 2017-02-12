@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = current_user.categories.new
+    redirect_to categories_path
   end
 
   def index
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    set_category
+    get_category
   end
 
   def show
@@ -21,11 +22,11 @@ class CategoriesController < ApplicationController
 
   def update
     begin
-      set_category
+      get_category
     rescue ActiveRecord::RecordNotFound
     end
     respond_to do |format|
-      if set_category.update(category_params)
+      if get_category.update(category_params)
         format.html { redirect_to categories_path, notice: output_text('updated') }
         format.json { head :no_content }
       else
@@ -49,7 +50,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    set_category.destroy
+    get_category.destroy
     respond_to do |format|
       format.html { redirect_to categories_path, notice: output_text('deleted') }
       format.json { head :no_content }
@@ -57,12 +58,11 @@ class CategoriesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_category
+
+  def get_category
     @category = current_user.categories.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
     params.require(:category).permit(:title, :type_id)
   end
@@ -72,7 +72,7 @@ class CategoriesController < ApplicationController
   end
 
   def invalid_category
-    logger.error "Attempt to access invalid catageory #{params[:id]} by user #{current_user.id}"
+    logger.error "Attempt to access invalid category #{params[:id]} by user #{current_user.id}"
     redirect_to categories_path, notice: 'Invalid category'
   end
 

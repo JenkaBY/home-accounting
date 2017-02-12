@@ -7,7 +7,7 @@ class Category < ApplicationRecord
     if finances.empty?
       return true
     else
-      errors.add(:base, 'finances actions exist')
+      errors.add(:base, 'finance actions exist')
       return false
     end
   end
