@@ -11,12 +11,6 @@ Rails.application.routes.draw do
   get 'finances/show'
 
   resources :categories
-  # get 'categories/index'
-  # get 'categories/show'
-  # get 'categories/destroy'
-  # get 'categories/update'
-  # get 'categories/new'
-  # get 'categories/create'
 
   get '/home', to: 'application#home', as: 'home'
 end
