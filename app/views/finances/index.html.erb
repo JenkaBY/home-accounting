@@ -1,5 +1,5 @@
 <h1>Your finances</h1>
-
+<div class="navbar-text"> Your balance <%= @balance %></div>
 <table class="table table-striped table-sm">
   <thead class="head">
   <tr>
@@ -15,12 +15,11 @@
   <% @finances.each do |fin| %>
       <tr>
         <td scope="row"><%= fin.action_date %></td>
-        <td><%= number_to_currency(fin.amount) %></td>
+        <td class=""><%= number_to_currency(fin.amount) %></td>
         <td><%= Category.find(fin.category_id).title %></br>
           <small> <%= fin.description %> </small> </td>
         <td>
           <%= link_to 'Edit', edit_finance_path(fin) %>
-
         </td>
         <td>
           <%= link_to 'Remove', fin, method: :delete, data: { confirm: 'Are you sure?' } %>

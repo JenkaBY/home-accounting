@@ -1,7 +1,7 @@
 <%= form_for(@finance) do |f| %>
-    <% if @finance.errors.any? %>
+    <% if @finance.errors.any?  %>
         <div id="alert alert-warning">
-          <h2><%= pluralize(@finance.errors.count, 'error') %> prohibited this category from being saved:</h2>
+          <h2><%= pluralize(@finance.errors.count, 'error') %> prohibited this finance action from being saved:</h2>
 
           <ul>
             <% @finance.errors.full_messages.each do |msg| %>
@@ -10,10 +10,11 @@
           </ul>
         </div>
     <% end %>
-
     <div class="form-group">
-      <%= f.label :action_date %>
-      <%= f.date_select :action_date , class: 'form-control'%>
+      <%= f.label :action_date, class: 'col-2 col-form-label' %>
+      <div class="col-10">
+      <%= f.date_select :action_date , class: 'form-control' %>
+      </div>
     </div>
     <div class="form-group">
       <%= f.label :amount %>

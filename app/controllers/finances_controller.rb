@@ -9,6 +9,7 @@ class FinancesController < ApplicationController
   def index
     @finances = current_user.finances.all.order(action_date: :desc)
     @finance = current_user.finances.new
+
   end
 
   def edit
@@ -58,8 +59,16 @@ class FinancesController < ApplicationController
     end
   end
 
+  def balance
+    @balance = 0
+  end
 
   private
+
+  # def expenses
+  #   current_user.finances.where(Category.type_id == 1).to_a.sum {|fin| fin.amount}
+  # end
+
 
   def get_finance
     @finance = current_user.finances.find(params[:id])
