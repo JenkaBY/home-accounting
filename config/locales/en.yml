@@ -21,3 +21,45 @@
 
 en:
   hello: "Hello world"
+  welcome_to: "Welcome to the Home Accounting"
+  some_text: "Some text should be here"
+  sign_up: "Sign up"
+  accounting: "Accounting"
+  report: "Reports"
+  category: "Category"
+  setting: "Setting"
+  log_out: "Log out"
+  log_in: "Log in"
+  register: "Register"
+  welcome: "Welcome"
+  password_confirm: "Password confirmation"
+  password: "Password"
+  name: "Name"
+  placeholder_email: "hello@youremail.com"
+  email: "Email"
+  min_charachter: "characters minimum"
+  new_password: "New password"
+  confirm_new_pass: "Confirm new password"
+  change_password: "Change my password"
+  forgot_password: "Forgot your password?"
+  send_instruction: "Send me reset password instructions"
+  remember_me: "Remember me"
+  edit: "Edit"
+  back: "Back"
+  save: "Save"
+  dat: "Date"
+  and: "and"
+  remove: "Remove"
+  confirmation: "Are you sure?"
+#  ----------------
+  text_alert: "prohibited this finance action from being saved"
+  amount: "Amount"
+  description: "Description"
+  error: "error"
+#  -----
+
+
+
+
+
+

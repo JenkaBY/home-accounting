@@ -1,17 +1,19 @@
 <ul class="nav navbar-nav">
   <% if current_user %>
-      <li><%= link_to 'Accounting', finances_path %></li>
-      <li><%= link_to 'Report', '#' %></li>
-      <li><%= link_to 'Categories', categories_path %></li>
+      <li><%= link_to t('accounting'), finances_path %></li>
+      <li><%= link_to t('report'), '#' %></li>
+      <li><%= link_to t('category'), categories_path %></li>
+      <div class="navbar-text "><strong class="text-center"> Welcome, <%= current_user.name %>!
+        Your balance <em class="mark"><%= number_to_currency(current_user.balance) %> </em></strong></div>
   <% end %>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
   <% if current_user %>
-      <li><%= link_to 'Setting', edit_user_registration_path %></li>
-      <li><%= link_to 'Log out', destroy_user_session_path, method: 'delete' %></li>
+      <li><%= link_to t('setting'), edit_user_registration_path %></li>
+      <li><%= link_to t('log_out'), destroy_user_session_path, method: 'delete' %></li>
   <% else %>
-      <li><%= link_to 'Log in', new_user_session_path %></li>
-      <li><%= link_to 'Register', new_user_registration_path %></li>
+      <li><%= link_to t('log_in'), new_user_session_path %></li>
+      <li><%= link_to t('register'), new_user_registration_path %></li>
   <% end %>
 </ul>

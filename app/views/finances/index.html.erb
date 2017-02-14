@@ -1,11 +1,10 @@
-<h1>Your finances</h1>
-<div class="navbar-text"> Your balance <%= @balance %></div>
+<% @index = true %>
 <table class="table table-striped table-sm">
   <thead class="head">
   <tr>
-    <th>Date</th>
-    <th>Amount</th>
-    <th>Category and description</th>
+    <th><%= t('dat') %></th>
+    <th><%= t('amount') %></th>
+    <th><%= t('category') %> <%= t('and') %> <%= t('description') %></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,15 +13,22 @@
   <tbody>
   <% @finances.each do |fin| %>
       <tr>
-        <td scope="row"><%= fin.action_date %></td>
-        <td class=""><%= number_to_currency(fin.amount) %></td>
-        <td><%= Category.find(fin.category_id).title %></br>
-          <small> <%= fin.description %> </small> </td>
-        <td>
-          <%= link_to 'Edit', edit_finance_path(fin) %>
+        <% @category = get_category(fin.category_id) %>
+        <td scope="row">
+          <% if @date != fin.action_date %>
+              <%= fin.action_date %>
+              <% @date = fin.action_date %>
+          <% end %>
+        </td>
+        <td><%= get_sign(@category)%><%= number_to_currency(fin.amount) %></td>
+        <td><%= @category.title %></br>
+          <small> <%= fin.description %> </small>
         </td>
         <td>
-          <%= link_to 'Remove', fin, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to t('edit'), edit_finance_path(fin) %>
+        </td>
+        <td>
+          <%= link_to t('remove'), fin, method: :delete, data: {confirm: t('confirmation')} %>
         </td>
       </tr>
   <% end %>

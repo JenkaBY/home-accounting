@@ -1,7 +1,7 @@
 <%= form_for(@finance) do |f| %>
     <% if @finance.errors.any?  %>
         <div id="alert alert-warning">
-          <h2><%= pluralize(@finance.errors.count, 'error') %> prohibited this finance action from being saved:</h2>
+          <h2><%= pluralize(@finance.errors.count, t('error')) %> <%= t('error.finances.text_alert')%>:</h2>
 
           <ul>
             <% @finance.errors.full_messages.each do |msg| %>
@@ -10,28 +10,39 @@
           </ul>
         </div>
     <% end %>
+
     <div class="form-group">
-      <%= f.label :action_date, class: 'col-2 col-form-label' %>
       <div class="col-10">
-      <%= f.date_select :action_date , class: 'form-control' %>
+        <%= f.label :action_date, class: 'col-2 col-form-label' %>
+        <%= f.date_select :action_date , class: 'form-control' %>
       </div>
     </div>
+
     <div class="form-group">
-      <%= f.label :amount %>
+      <%= f.label t('amount') %>
       <%= f.text_field :amount , class: 'form-control'%>
     </div>
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label t('description') %>
       <%= f.text_field :description , class: 'form-control'%>
     </div>
 
     <div class="form-group">
-      <%= f.label 'Category' %>
-      <%= select(:finance, :category_id, current_user.categories.all.collect { |cat| [cat.title, cat.id] },
-                                          { :class => 'dropdown-menu'}) %>
+      <%= f.label t('category') %>
+      <%= select(:finance, :category_id, get_categories, { :class => 'dropdown-menu'}) %>
     </div>
 
-    <div class="form-group">
-      <%= f.submit 'Add', class: 'btn btn-primary btn-lg'%>
+    <div class="btn-toolbar justify-content-between">
+
+      <%= hidden_div_if(@index, id: 'btn_back', class: 'btn-group') do %>
+          <%= link_to t('back'), finances_path, class: 'back btn btn-primary btn-lg' %>
+      <% end %>
+
+      <div class="btn-group">
+        <%= f.submit t('save'), class: 'btn btn-success btn-lg'%>
+      </div>
+
     </div>
+
+
 <% end %>

@@ -1,4 +1,4 @@
-<h1 class="text-center">Edit</h1>
+<h1 class="text-center"><%= t('edit')%></h1>
 <div class="row">
   <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
     <div class="panel panel-default">
@@ -43,14 +43,20 @@
               <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
               <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current password', class: 'form-control' %>
             </div>
-            <div>
-              <%= f.submit "Save", class: 'btn btn-primary btn-lg' %>
-            </div>
-        <% end %>
-        <div class="form-group">
-          <br/><%= button_to "Delete", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: 'btn btn-danger btn-lg' %>
-        </div>
 
+            <div class="btn-toolbar justify-content-between">
+
+
+              <div class="btn-group justify-content-between">
+                <%= f.submit 'Save', class: 'btn btn-success btn-lg' %>
+              </div>
+
+
+        <% end %>
+        <div class="btn-group justify-content-between">
+          <%= button_to 'Delete', registration_path(resource_name), data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger btn-lg' %>
+        </div>
+        </div>
       </div>
     </div>
   </div>

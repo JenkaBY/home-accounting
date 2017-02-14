@@ -26,3 +26,5 @@ document.addEventListener("turbolinks:load", function() {
     }
     $('a[href="' + location.pathname + '"]').parent('li').addClass('active');
 });
+
+$('.alert.alert-info').hide();

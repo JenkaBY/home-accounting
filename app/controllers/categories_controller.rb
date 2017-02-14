@@ -12,11 +12,11 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    get_category
+    redirect_to category_path
   end
 
   def show
-    redirect_to edit_category_path
+    get_category
   end
 
 
@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to categories_path, notice: output_text('created') }
         format.json { render action: 'show', status: :created, location: @category }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to categories_path, alert: 'Errorssss' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

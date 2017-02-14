@@ -9,15 +9,14 @@ class FinancesController < ApplicationController
   def index
     @finances = current_user.finances.all.order(action_date: :desc)
     @finance = current_user.finances.new
-
   end
 
   def edit
-    get_finance
+    redirect_to finance_path
   end
 
   def show
-    redirect_to edit_finance_path
+    get_finance
   end
 
   def update
@@ -30,7 +29,7 @@ class FinancesController < ApplicationController
         format.html { redirect_to finances_path, notice: output_text('updated') }
         # format.json { head :no_content }
       else
-        format.html { render action: 'index' }
+        format.html { redirect_to finances_path, alert: 'Errors!!!' }
         # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
@@ -43,13 +42,13 @@ class FinancesController < ApplicationController
         format.html { redirect_to finances_path, notice: output_text('created') }
         # format.json { render action: 'show', status: :created, location: @finance }
       else
-        format.html { render action: 'index' }
+        format.html { redirect_to finances_path, alert: 'Errors!!!' }
+        # flash.now[:alert] = "Your book was not found"
+        # render "index"
         # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
   end
-
-
 
   def destroy
     get_finance.destroy
@@ -59,16 +58,9 @@ class FinancesController < ApplicationController
     end
   end
 
-  def balance
-    @balance = 0
-  end
+
 
   private
-
-  # def expenses
-  #   current_user.finances.where(Category.type_id == 1).to_a.sum {|fin| fin.amount}
-  # end
-
 
   def get_finance
     @finance = current_user.finances.find(params[:id])
