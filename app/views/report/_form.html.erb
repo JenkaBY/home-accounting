@@ -1,0 +1,47 @@
+<%= form_tag report_path do %>
+    <div class="form-group">
+      <div class="col-10">
+        <%= label_tag 'Start date' %>
+        <%= date_select params[:start_date], :start_date   %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-10">
+        <%= label_tag 'End date' %>
+        <%= date_select params[:end_date], :end_date %>
+      </div>
+    </div>
+
+    <details>
+      <summary><%= t('choose_type') %></summary>
+      <div class="form-group">
+        <%= label_tag t('type') %>
+        <%= select(params[:type_id], :type_id, get_all_types,
+                   {:class => 'dropdown-menu', :prompt => 'Please select' }) %>
+      </div>
+    </details>
+
+    <details>
+      <summary><%= t('choose_category') %></summary>
+      <div class="form-group">
+        <%= label_tag t('category') %>
+        <%= select(params[:category_id], :category_id, get_user_categories,
+                   {:class => 'dropdown-menu', :prompt => 'Please select'}) %>
+      </div>
+    </details>
+
+    <div class="btn-group">
+      <%= submit_tag 'Generate' %>
+    </div>
+    <% if false %>
+        <div class="btn-toolbar justify-content-between">
+
+          <%= hidden_div_if(@index, id: 'btn_back', class: 'btn-group') do %>
+              <%= link_to t('back'), finances_path, class: 'back btn btn-primary btn-lg' %>
+          <% end %>
+
+
+        </div>
+    <% end %>
+<% end %>

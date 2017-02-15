@@ -1,1 +1,1 @@
-APPLICATION_NAME = 'Home Accounting'
+APPLICATION_NAME = "Home Accounting"

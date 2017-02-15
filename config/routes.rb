@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   resources :finances
 
   get '/home', to: 'application#home', as: 'home'
+  # get 'report', to: 'report#generate', as: 'report'
+  # post 'report', to: 'report#rep', as: 'report'
+  get '/report/new' => 'report#new', :as => :new_report
+  post '/report' => 'report#generate', :as => :report
+
 end

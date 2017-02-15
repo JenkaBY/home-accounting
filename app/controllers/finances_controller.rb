@@ -1,6 +1,8 @@
 class FinancesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_finance
 
+  # TO DO заменить текстовые поля на I18n
+
   def new
     @finance = current_user.finances.new
     redirect_to finances_path

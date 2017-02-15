@@ -1,7 +1,7 @@
 <%= form_for(@category) do |f| %>
     <% if @category.errors.any? %>
         <div id="alert alert-warning">
-          <h2><%= pluralize(@category.errors.count, 'error') %> prohibited this category from being saved:</h2>
+          <h2><%= pluralize(@category.errors.count, t('error')) %> <%= t('text_alert_category')%>:</h2>
 
           <ul>
             <% @category.errors.full_messages.each do |msg| %>
@@ -12,22 +12,22 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :title %>
+      <%= f.label t('title1') %>
       <%= f.text_field :title , class: 'form-control'%>
     </div>
     <div class="form-group">
-      <%= f.label 'Type' %>
-      <%= select(:category, :type_id, get_types, { :class => 'dropdown-menu' }) %>
+      <%= f.label t('type') %>
+      <%= select(:category, :type_id, get_all_types, {:class => 'dropdown-menu' }) %>
     </div>
 
     <div class="btn-toolbar justify-content-between">
 
       <%= hidden_div_if(@index_cat, id: 'btn_back', class: 'btn-group') do %>
-          <%= link_to 'Back', categories_path, class: 'back btn btn-primary btn-lg' %>
+          <%= link_to t('back'), categories_path, class: 'back btn btn-primary btn-lg' %>
       <% end %>
 
       <div class="btn-group">
-          <%= f.submit 'Save', class: 'btn btn-success btn-lg'%>
+          <%= f.submit t('save'), class: 'btn btn-success btn-lg'%>
       </div>
 
     </div>

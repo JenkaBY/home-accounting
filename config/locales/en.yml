@@ -20,12 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  application_name: "Home Accounting"
   welcome_to: "Welcome to the Home Accounting"
   some_text: "Some text should be here"
   sign_up: "Sign up"
   accounting: "Accounting"
-  report: "Reports"
+  report: "Report"
   category: "Category"
   setting: "Setting"
   log_out: "Log out"
@@ -48,15 +48,31 @@ en:
   back: "Back"
   save: "Save"
   dat: "Date"
+  type: "Type"
+  title1: "Title"
   and: "and"
   remove: "Remove"
   confirmation: "Are you sure?"
-#  ----------------
+#  -------Finance---------
   text_alert: "prohibited this finance action from being saved"
   amount: "Amount"
   description: "Description"
   error: "error"
-#  -----
+  add_action: "Add action"
+#  ----- Category
+  alert_category: "The field Title should not be empty"
+  category_created: "Category was successfully created"
+  category_removed: "Category was successfully removed"
+  category_updated: "Category was successfully updated"
+  category_invalid: "Invalid category"
+  text_alert_category: "prohibited this category from being saved"
+  add_category: "Add category"
+  edit_category: "Editing category"
+#  -------Report--------
+  parameter_report: "Choose parameter to generate report"
+  choose_type: "Choose type of category"
+  choose_category: "Choose category"
+
 
 
 

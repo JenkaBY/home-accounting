@@ -14,7 +14,7 @@
     <div class="form-group">
       <div class="col-10">
         <%= f.label :action_date, class: 'col-2 col-form-label' %>
-        <%= f.date_select :action_date , class: 'form-control' %>
+        <%= f.date_select :action_date, class: 'form-control' %>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
 
     <div class="form-group">
       <%= f.label t('category') %>
-      <%= select(:finance, :category_id, get_categories, { :class => 'dropdown-menu'}) %>
+      <%= select(:finance, :category_id, get_user_categories, {:class => 'dropdown-menu'}) %>
     </div>
 
     <div class="btn-toolbar justify-content-between">

@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     end
     respond_to do |format|
       if get_category.update(category_params)
-        format.html { redirect_to categories_path, notice: output_text('updated') }
+        format.html { redirect_to categories_path, notice: t('category_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -40,10 +40,10 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
     respond_to do |format|
       if @category.save
-        format.html { redirect_to categories_path, notice: output_text('created') }
+        format.html { redirect_to categories_path, notice: t('category_created') }
         format.json { render action: 'show', status: :created, location: @category }
       else
-        format.html { redirect_to categories_path, alert: 'Errorssss' }
+        format.html { redirect_to categories_path, alert: t('alert_category') }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
   def destroy
     get_category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_path, notice: output_text('deleted') }
+      format.html { redirect_to categories_path, notice: t('category_removed') }
       format.json { head :no_content }
     end
   end
@@ -67,13 +67,10 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:title, :type_id)
   end
 
-  def output_text(action)
-    'Category was successfully ' + action + '.'
-  end
 
   def invalid_category
     logger.error "Attempt to access invalid category #{params[:id]} by user #{current_user.id}"
-    redirect_to categories_path, notice: 'Invalid category'
+    redirect_to categories_path, notice: t('category_invalid')
   end
 
 end
