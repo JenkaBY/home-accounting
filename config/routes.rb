@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # post 'report', to: 'report#rep', as: 'report'
   get '/report/new' => 'report#new', :as => :new_report
   post '/report' => 'report#generate', :as => :report
+  get '/report' => 'report#report_get'
 
 end

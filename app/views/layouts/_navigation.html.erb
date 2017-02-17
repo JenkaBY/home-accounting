@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
   <% if current_user %>
       <li><%= link_to t('accounting'), finances_path %></li>
-      <li><%= link_to t('report'), 'report/new' %></li>
+      <li><%= link_to t('report'), new_report_path %></li>
       <li><%= link_to t('category'), categories_path %></li>
       <div class="navbar-text "><strong class="text-center"> Welcome, <%= current_user.name %>!
         Your balance <em class="mark"><%= number_to_currency(current_user.balance) %> </em></strong></div>

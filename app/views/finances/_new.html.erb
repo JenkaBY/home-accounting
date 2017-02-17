@@ -3,7 +3,10 @@
     <div class="panel panel-default">
       <div class="panel-body">
 
-        <%= render 'finances/form' %>
+        <details>
+          <summary><%= t('add_action') %></summary>
+          <%= render 'finances/form' %>
+        </details>
 
       </div>
     </div>

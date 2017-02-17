@@ -1,0 +1,9 @@
+<h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %> - <%= @end_date %></h4>
+<%= render 'report/all' %>
+
+<% if @type_id != 0 %>
+    <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
+      - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %> </h4>
+
+    <%= render 'report/bytype' %>
+<% end %>

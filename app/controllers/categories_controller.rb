@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to categories_path, notice: t('category_updated') }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'show' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
@@ -41,10 +41,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_path, notice: t('category_created') }
-        format.json { render action: 'show', status: :created, location: @category }
+        # format.json { render action: 'show', status: :created, location: @category }
       else
-        format.html { redirect_to categories_path, alert: t('alert_category') }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.html { render action: 'show', alert: t('alert_category') }
+        # format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end

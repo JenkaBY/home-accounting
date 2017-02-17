@@ -1,16 +1,22 @@
 class Category < ApplicationRecord
   belongs_to :user
   has_one :type
-  has_many :finances
+  has_many :finances, dependent: :destroy
+  before_destroy :ensure_not_referenced_by_any_finances, prepend: true
+
   validates :type_id, :title, presence: true
+
+  scope :income_finances,  -> { where(type_id: Type::INCOME).joins(:finances) }
+  scope :expense_finances, -> { where(type_id: Type::EXPENSE).joins(:finances) }
 
   private
 
-  def ensure_not_referenced_by_finance
+  def ensure_not_referenced_by_any_finances
     if finances.empty?
       return true
     else
-      errors.add(:base, 'finance actions exist')
+      errors[:base] << "Can't be destroy because of finance actions exist"
+      throw :abort
       return false
     end
   end

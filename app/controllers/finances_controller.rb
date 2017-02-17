@@ -1,15 +1,14 @@
 class FinancesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_finance
 
-  # TO DO заменить текстовые поля на I18n
-
   def new
     @finance = current_user.finances.new
     redirect_to finances_path
   end
 
   def index
-    @finances = current_user.finances.all.order(action_date: :desc)
+    month_ago = Time.now - 1.month;
+    @finances = current_user.finances.from_date(month_ago).order(action_date: :desc)
     @finance = current_user.finances.new
   end
 
@@ -28,10 +27,10 @@ class FinancesController < ApplicationController
     end
     respond_to do |format|
       if get_finance.update(finance_params)
-        format.html { redirect_to finances_path, notice: output_text('updated') }
+        format.html { redirect_to finances_path, notice: t('finance_updated') }
         # format.json { head :no_content }
       else
-        format.html { redirect_to finances_path, alert: 'Errors!!!' }
+        format.html { render action: 'show' }
         # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
@@ -41,12 +40,10 @@ class FinancesController < ApplicationController
     @finance = current_user.finances.build(finance_params)
     respond_to do |format|
       if @finance.save
-        format.html { redirect_to finances_path, notice: output_text('created') }
+        format.html { redirect_to finances_path, notice: t('finance_created') }
         # format.json { render action: 'show', status: :created, location: @finance }
       else
-        format.html { redirect_to finances_path, alert: 'Errors!!!' }
-        # flash.now[:alert] = "Your book was not found"
-        # render "index"
+        format.html { render action: 'show' }
         # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
@@ -55,7 +52,7 @@ class FinancesController < ApplicationController
   def destroy
     get_finance.destroy
     respond_to do |format|
-      format.html { redirect_to finances_path, notice: output_text('deleted') }
+      format.html { redirect_to finances_path, notice: t('finance_removed') }
       # format.json { head :no_content }
     end
   end
@@ -72,13 +69,10 @@ class FinancesController < ApplicationController
     params.require(:finance).permit(:action_date, :amount, :category_id, :description, :user_id)
   end
 
-  def output_text(action)
-    'Finance was successfully ' + action + '.'
-  end
 
   def invalid_finance
     logger.error "Attempt to access invalid finance #{params[:id]} by user #{current_user.id}"
-    redirect_to finances_path, notice: 'Invalid finance action'
+    redirect_to finances_path, notice: t('invalid_action')
   end
 
 end

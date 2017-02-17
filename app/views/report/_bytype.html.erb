@@ -1,0 +1,29 @@
+
+<table class="table table-striped table-sm">
+  <thead class="head">
+  <tr>
+    <th><%= t('category') %></th>
+    <th><%= t('percent') %></th>
+    <th><%= t('amount') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |cat| %>
+      <% @finances_current_percent = cat.amount/@finances_current*100 %>
+      <tr>
+        <td> <%= get_category(cat.category_id).title %> </td>
+        <td><%= number_to_percentage(@finances_current_percent, precision: 0) %></td>
+        <td><%= number_to_currency(cat.amount) %></td>
+      </tr>
+  <% end %>
+
+  <tr>
+    <th id=><%= t('total') %></th>
+    <th>100%</th>
+    <th><%= @finances_current %></th>
+    <th></th>
+  </tr>
+
+  </tbody>
+</table>
