@@ -11,13 +11,14 @@
   </thead>
 
   <tbody>
-  <% @finances.each do |fin| %>
+  <% @finances_for_period.each do |fin| %>
       <tr>
         <% @categ = get_category(fin.category_id) %>
         <td>
           <% if @date != fin.action_date %>
               <%= fin.action_date %>
               <% @date = fin.action_date %>
+              <% @title = '' %>
           <% end %>
         </td>
         <td>
@@ -40,7 +41,7 @@
     <th></th>
     <th></th>
     <th id="expense"><%= t('total_income') %></th>
-    <th>+<%= number_to_currency(@income_current_period) %></th>
+    <th>+<%= number_to_currency(@total_income_period) %></th>
     <th></th>
     <th></th>
   </tr>
@@ -48,7 +49,7 @@
     <th></th>
     <th></th>
     <th id="income"><%= t('total_expense') %></th>
-    <th>-<%= number_to_currency(@expense_current_period) %></th>
+    <th>-<%= number_to_currency(@total_expense_period) %></th>
     <th></th>
     <th></th>
   </tr>

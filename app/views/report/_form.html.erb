@@ -17,12 +17,14 @@
       <summary><%= t('choose_type') %></summary>
       <div class="form-group">
         <%= label_tag t('type') %>
-        <%= select(params[:type_id], :type_id, get_all_types,
-                   {:class => 'dropdown-menu', :prompt => t('please_select') }) %>
+        <%= collection_select( params[:type_id],:type_id, Type.all, :id, :title,
+                               {include_blank: false},
+                               {:multiple => true } )
+        %>
       </div>
     </details>
 
-    <details>
+    <details hidden = 'true'>
       <summary><%= t('choose_category') %></summary>
       <div class="form-group">
         <%= label_tag t('category') %>

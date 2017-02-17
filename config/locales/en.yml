@@ -75,7 +75,7 @@ en:
   edit_category: "Editing category"
 #  -------Report--------
   parameter_report: "Choose parameters to generate report"
-  choose_type: "Choose type of category"
+  choose_type: "Choose types of category"
   choose_category: "Choose category"
   generate: "Generate"
   start_date: "Start date"
@@ -87,6 +87,8 @@ en:
   percent: "Percent,%"
   finance_report: "Finance report at"
   grouped_by: "grouped by "
+  expense: "Expense"
+  income: "Income"
 
 
 

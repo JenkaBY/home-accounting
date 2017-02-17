@@ -1,9 +1,25 @@
 <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %> - <%= @end_date %></h4>
 <%= render 'report/all' %>
 
-<% if @type_id != 0 %>
-    <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
-      - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %> </h4>
+<% @type_id.each do |type| %>
 
-    <%= render 'report/bytype' %>
+    <% if type == Type::INCOME %>
+        <% @categories = @categories_income %>
+        <% @finances_current = @finances_current_period_income %>
+
+        <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
+          - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('income') %>) </h4>
+
+        <%= render 'report/bytype' %>
+    <% end %>
+
+    <% if type == Type::EXPENSE %>
+        <% @categories = @categories_expense %>
+        <% @finances_current = @finances_current_period_expense %>
+        <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
+          - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('expense') %>)  </h4>
+
+        <%= render 'report/bytype' %>
+    <% end %>
+
 <% end %>
