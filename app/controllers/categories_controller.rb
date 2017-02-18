@@ -60,7 +60,7 @@ class CategoriesController < ApplicationController
   private
 
   def get_category
-    @category = current_user.categories.find(params[:id])
+    @category = current_user.categories.find_by(id: :id)
   end
 
   def category_params

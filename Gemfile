@@ -15,7 +15,9 @@ gem 'jquery-rails'            # Use jquery as the JavaScript library
 gem 'turbolinks', '~> 5'      # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5'      # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise', '4.2.0'         # Use registration/login/logout functionality
-gem 'bootstrap-sass', '3.3.7' # Use Bootstrap
+gem 'bootstrap-sass', '3.3.7' # Use Bootstrap sass
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 #########################
 # ruby '2.3.0'
 # gem 'rails', '5.0.0'            # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

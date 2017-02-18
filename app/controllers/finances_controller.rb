@@ -57,13 +57,11 @@ class FinancesController < ApplicationController
     end
   end
 
-
-
-  private
-
   def get_finance
     @finance = current_user.finances.find(params[:id])
   end
+
+  private
 
   def finance_params
     params.require(:finance).permit(:action_date, :amount, :category_id, :description, :user_id)

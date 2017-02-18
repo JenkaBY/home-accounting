@@ -18,8 +18,8 @@
       <div class="form-group">
         <%= label_tag t('type') %>
         <%= collection_select( params[:type_id],:type_id, Type.all, :id, :title,
-                               {include_blank: false},
-                               {:multiple => true } )
+                               { include_blank: false },
+                               { :multiple => true } )
         %>
       </div>
     </details>

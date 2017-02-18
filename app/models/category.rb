@@ -5,9 +5,9 @@ class Category < ApplicationRecord
   before_destroy :ensure_not_referenced_by_any_finances, prepend: true
 
   validates :type_id, :title, presence: true
-
-  scope :income_finances,  -> { where(type_id: Type::INCOME).joins(:finances) }
-  scope :expense_finances, -> { where(type_id: Type::EXPENSE).joins(:finances) }
+  scope :categories_with_type, -> ( type_id ) { where(type_id: type_id) }
+  scope :income_finances,   -> { where(type_id: Type::INCOME).joins(:finances) }
+  scope :expense_finances,  -> { where(type_id: Type::EXPENSE).joins(:finances) }
 
   private
 

@@ -1,4 +1,4 @@
-<h1 class="text-center"><%= t('edit')%></h1>
+<h1 class="text-center"><%= t('edit') %></h1>
 <div class="row">
   <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
     <div class="panel panel-default">
@@ -12,13 +12,16 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :name %><br/>
-              <%= f.text_field :name, class: 'form-control', placeholder: 'Name', class: 'form-control' %>
+              <%= f.label :name %>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">@</span>
+                <%= f.text_field :name, class: 'form-control', 'arial-label': 'basic-addon1', placeholder: 'Name', class: 'form-control' %>
+              </div>
             </div>
 
             <div class="form-group">
               <%= f.label :email %><br/>
-              <%= f.email_field :email, autofocus: true, placeholder: 'Hello@youremail.com', class: 'form-control' %>
+              <%= f.email_field :email, autofocus: true, placeholder: 'hello@youremail.com', class: 'form-control' %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -27,21 +30,20 @@
 
             <div class="form-group">
               <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-              <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
+              <%= f.password_field :password, autocomplete: 'off', placeholder: "#{@minimum_password_length} characters minimum", class: 'form-control' %>
               <% if @minimum_password_length %>
-                  <br/>
                   <em><%= @minimum_password_length %> characters minimum</em>
               <% end %>
             </div>
 
             <div class="form-group">
               <%= f.label :password_confirmation %><br/>
-              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password confirmation', class: 'form-control' %>
+              <%= f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Password confirmation', class: 'form-control' %>
             </div>
 
             <div class="form-group">
               <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-              <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current password', class: 'form-control' %>
+              <%= f.password_field :current_password, autocomplete: 'off', placeholder: 'Current password', class: 'form-control' %>
             </div>
 
             <div class="btn-toolbar justify-content-between">

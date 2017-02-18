@@ -18,7 +18,10 @@
 //= require bootstrap/custom
 //= require bootstrap
 //= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
+
 
 document.addEventListener("turbolinks:load", function() {
     if ($('li.active').html() != undefined) {
@@ -27,4 +30,10 @@ document.addEventListener("turbolinks:load", function() {
     $('a[href="' + location.pathname + '"]').parent('li').addClass('active');
 });
 
-$('.alert.alert-info').hide();
+// Bootstrap 3 Datepicker v4
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+});
+

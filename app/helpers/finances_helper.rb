@@ -5,7 +5,7 @@ module FinancesHelper
   end
 
   def get_category(id)
-    @cata = Category.find(id)
+    @cata = current_user.categories.find_by(id: id)
   end
 
 
