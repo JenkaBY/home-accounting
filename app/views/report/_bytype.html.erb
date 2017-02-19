@@ -10,10 +10,10 @@
 
   <tbody>
   <% @categories.each do |cat| %>
-      <% @finances_current_percent = cat.amount/@finances_current*100 %>
+      <% finances_current_percent = cat.amount/@finances_current*100 %>
       <tr>
         <td> <%= get_category(cat.category_id).title %> </td>
-        <td><%= number_to_percentage(@finances_current_percent, precision: 0) %></td>
+        <td><%= number_to_percentage(finances_current_percent, precision: 0) %></td>
         <td><%= number_to_currency(cat.amount) %></td>
       </tr>
   <% end %>

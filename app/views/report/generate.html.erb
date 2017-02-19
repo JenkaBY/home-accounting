@@ -5,7 +5,7 @@
 
     <% if type == Type::INCOME %>
         <% @categories = @categories_income %>
-        <% @finances_current = @finances_current_period_income %>
+        <% @finances_current = @total_income_period %>
 
         <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
           - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('income') %>) </h4>
@@ -15,7 +15,7 @@
 
     <% if type == Type::EXPENSE %>
         <% @categories = @categories_expense %>
-        <% @finances_current = @finances_current_period_expense %>
+        <% @finances_current = @total_expense_period %>
         <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
           - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('expense') %>)  </h4>
 

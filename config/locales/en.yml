@@ -59,11 +59,12 @@ en:
   description: "Description"
   error: "error"
   add_action: "Add action"
+  add_finance_action: "Add finance action"
   finance_created: "Finance was successfully created"
   finance_removed: "Finance was successfully removed"
   finance_updated: "Finance was successfully updated"
   invalid_action: "Invalid finance action"
-
+  select_category: "Select category"
 #  ----- Category
   alert_category: "The field Title should not be empty"
   category_created: "Category was successfully created"
@@ -73,6 +74,7 @@ en:
   text_alert_category: "prohibited this category from being saved"
   add_category: "Add category"
   edit_category: "Editing category"
+  select_category_type: "Select category type"
 #  -------Report--------
   parameter_report: "Choose parameters to generate report"
   choose_type: "Choose types of category"

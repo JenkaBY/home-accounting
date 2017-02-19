@@ -23,7 +23,7 @@
 //= require_tree .
 
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function () {
     if ($('li.active').html() != undefined) {
         $('li.active').removeClass('active');
     }
@@ -34,6 +34,25 @@ document.addEventListener("turbolinks:load", function() {
 $(function () {
     $('#datetimepicker1').datetimepicker({
         format: 'YYYY-MM-DD'
+    });
+});
+
+
+$(function () {
+    $('#datetimepicker_startdate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
+    $('#datetimepicker_enddate').datetimepicker({
+        useCurrent: false ,//Important! See issue #1075
+        format: 'YYYY-MM-DD'
+    });
+
+    $("#datetimepicker_startdate").on("dp.change", function (e) {
+        $('#datetimepicker_enddate').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker_enddate").on("dp.change", function (e) {
+        $('#datetimepicker_startdate').data("DateTimePicker").maxDate(e.date);
     });
 });
 

@@ -14,7 +14,7 @@ module CategoriesHelper
         .group(:type_id).collect { |cat| [cat.type_id, cat.title] }
   end
 
-  def get_user_categories_grouped_by_type(user)
+  def get_categories_grouped_by_type(user)
     types = get_user_category_types(user)
     grouped_categories_by_type = []
     # [ ['type_title', ['cat_title', 'cat_id'] ], ... ]
@@ -35,7 +35,7 @@ module CategoriesHelper
     grouped_categories_by_type
   end
 
-  def get_category_title_by_id(id)
+  def get_category_title_by_finance_id(id)
     if id != nil
       title = @finance.category_id
       return title

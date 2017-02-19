@@ -1,7 +1,9 @@
-<div class="text-center">
-  <h1><%= t('welcome_to') %></h1>
-  <p><%= t('some_text') %></p>
-<% unless current_user %>
-  <%= link_to t('sign_up')+'!', new_user_registration_path, class: 'btn btn-large btn-primary' %>
-      <% end %>
+<div class="jumbotron text-center">
+
+    <h1><%= t('welcome_to') %></h1>
+    <p><%= t('some_text') %></p>
+    <% unless current_user %>
+        <%= link_to t('sign_up')+'!', new_user_registration_path, class: 'btn btn-large btn-primary' %>
+    <% end %>
+
 </div>

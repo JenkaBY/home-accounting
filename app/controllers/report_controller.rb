@@ -7,10 +7,9 @@ class ReportController < ApplicationController
 
   def generate
 
-    @start_date   = date_from_hash params[:start_date]
-    @end_date     = date_from_hash params[:end_date]
-    @type_id      = processing_array params[:type_id]
-    @category_id  = params[:category_id].to_i
+    @start_date  = params[:report][:start_date]
+    @end_date     = params[:report][:end_date]
+    @type_id      = processing_array params[:report][:type_id]
 
     finances = current_user.finances.from_date(@start_date).to_date(@end_date)
 
@@ -18,18 +17,16 @@ class ReportController < ApplicationController
     @total_income_period  = @finances_for_period.income.total
     @total_expense_period = @finances_for_period.expense.total
 
-    @total = @total_income_period - @total_expense_period
 
     if @type_id.include?(Type::INCOME)
-      @categories_income = finances.income.group(:category_id).select('finances.category_id, sum(finances.amount) as amount')
-      @finances_current_period_income = @total_income_period
+      @categories_income = finances.income.group(:category_id)
+                               .select('finances.category_id, sum(finances.amount) as amount')
     end
 
     if @type_id.include?(Type::EXPENSE)
-      @categories_expense = finances.expense.group(:category_id).select('finances.category_id, sum(finances.amount) as amount')
-      @finances_current_period_expense = @total_expense_period
+      @categories_expense = finances.expense.group(:category_id)
+                                .select('finances.category_id, sum(finances.amount) as amount')
     end
-
 
   end
 
@@ -39,8 +36,13 @@ class ReportController < ApplicationController
 
   private
 
+  def processing_array array
+    array.delete ''
+    array.map! { |el| el.to_i }
+  end
+
   def report_params
-    params.permit(:start_date, :end_date, :type_id, :category_id)
+    params.require(:report).permit(:start_date, :end_date, :type_id, :category_id)
   end
 
 end

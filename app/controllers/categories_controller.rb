@@ -60,13 +60,12 @@ class CategoriesController < ApplicationController
   private
 
   def get_category
-    @category = current_user.categories.find_by(id: :id)
+    @category = current_user.categories.find_by(id: params[:id])
   end
 
   def category_params
     params.require(:category).permit(:title, :type_id)
   end
-
 
   def invalid_category
     logger.error "Attempt to access invalid category #{params[:id]} by user #{current_user.id}"
