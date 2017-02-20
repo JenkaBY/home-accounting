@@ -1,12 +1,10 @@
-<table class="table table-striped table-sm">
+<table class="table table-striped table-bordered table-condensed">
   <thead class="head">
   <tr>
     <th><%= t('dat') %></th>
     <th><%= t('category') %></th>
     <th> <%= t('description') %></th>
     <th><%= t('amount') %></th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
 
@@ -29,12 +27,6 @@
         </td>
         <td><%= fin.description %></td>
         <td><%= get_sign(@categ) %><%= number_to_currency(fin.amount) %></td>
-        <td>
-          <%= link_to t('edit'), edit_finance_path(fin) %>
-        </td>
-        <td>
-          <%= link_to t('remove'), fin, method: :delete, data: {confirm: t('confirmation')} %>
-        </td>
       </tr>
   <% end %>
   <tr>
@@ -42,24 +34,18 @@
     <th></th>
     <th id="expense"><%= t('total_income') %></th>
     <th>+<%= number_to_currency(@total_income_period) %></th>
-    <th></th>
-    <th></th>
   </tr>
   <tr>
     <th></th>
     <th></th>
     <th id="income"><%= t('total_expense') %></th>
     <th>-<%= number_to_currency(@total_expense_period) %></th>
-    <th></th>
-    <th></th>
   </tr>
   <tr>
     <th></th>
     <th></th>
     <th id="total"><%= t('total') %></th>
     <th><%= number_to_currency(@total_income_period - @total_expense_period) %></th>
-    <th></th>
-    <th></th>
   </tr>
   </tbody>
 </table>

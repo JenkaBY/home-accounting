@@ -28,10 +28,12 @@
           <small> <%= fin.description %> </small>
         </td>
         <td>
-          <%= link_to t('edit'), edit_finance_path(fin) %>
+          <%= link_to edit_finance_path(fin), :class => 'glyphicon glyphicon glyphicon-pencil icon-normal' do %>
+          <% end %>
         </td>
         <td>
-          <%= link_to t('remove'), fin, method: :delete, data: {confirm: t('confirmation')} %>
+          <%= link_to fin, method: :delete, data: {confirm: t('confirmation')}, :class => 'glyphicon glyphicon-remove icon-danger' do %>
+          <% end %>
         </td>
       </tr>
   <% end %>
