@@ -22,6 +22,7 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
+DATE_FORMAT = 'YYYY-MM-DD';
 
 document.addEventListener("turbolinks:load", function () {
     if ($('li.active').html() != undefined) {
@@ -32,10 +33,11 @@ document.addEventListener("turbolinks:load", function () {
 
 // Bootstrap 3 Datepicker v4
 $(function () {
-    $('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD'
+    $('#datetimepicker_action_date,#datetimepicker_filter_start_date').datetimepicker({
+        format: DATE_FORMAT
     });
 });
+
 
 
 $(function () {

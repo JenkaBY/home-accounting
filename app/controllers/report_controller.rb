@@ -1,6 +1,4 @@
-require_relative '../../lib/core_ext/date.rb'
 class ReportController < ApplicationController
-  include ReportHelper
 
   def new
   end

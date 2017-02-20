@@ -1,0 +1,41 @@
+<div class="row">
+  <%= form_tag finances_path, method: 'get', :class => 'well form-inline' do %>
+
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker_startdate'>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+          <%= text_field :search,:from_date, class: 'form-control input-small', :placeholder => t('start_date') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker_enddate'>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          <%= text_field :search, :to_date, class: 'form-control', :placeholder => t('end_date') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= text_field :search, :amount, class: 'form-control', :placeholder => t('amount') %>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-tag"></span>
+            </span>
+            <%= text_field :search, :keywords, class: 'form-control', :placeholder => t('keywords') %>
+          </div>
+      </div>
+
+      <button type="submit" class="btn"><%= t('filter') %></button>
+
+  <% end %>
+</div>
