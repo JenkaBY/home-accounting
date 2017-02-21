@@ -25,6 +25,7 @@ en:
   some_text: "Some text should be here"
   sign_up: "Sign up"
   accounting: "Accounting"
+  dashboard: "Dashboard"
   report: "Report"
   category: "Category"
   setting: "Setting"
@@ -93,7 +94,8 @@ en:
   grouped_by: "grouped by "
   expense: "Expense"
   income: "Income"
-
+#-------rails_admin------------
+  not_perrmited: "You are not permitted to view admin page"
 
 
 
