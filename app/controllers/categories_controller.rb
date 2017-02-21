@@ -52,8 +52,12 @@ class CategoriesController < ApplicationController
   def destroy
     get_category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_path, notice: t('category_removed') }
-      format.json { head :no_content }
+      unless Category.exists?(id: params[:id])
+        format.html { redirect_to categories_path, notice: t('category_removed') }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to categories_path, alert: t('cant_be_destroy') }
+      end
     end
   end
 

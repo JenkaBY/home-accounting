@@ -78,6 +78,8 @@ en:
   add_category: "Add category"
   edit_category: "Editing category"
   select_category_type: "Select category type"
+  cant_be_destroy: "Can't be destroy because of finance actions exist"
+  cant_by_destroy_type: "Can't be destroy because of categories exist"
 #  -------Report--------
   parameter_report: "Choose parameters to generate report"
   choose_type: "Choose types of category"

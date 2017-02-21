@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   belongs_to :user
-  has_one :type
+  belongs_to :type
   has_many :finances, dependent: :destroy
   before_destroy :ensure_not_referenced_by_any_finances, prepend: true
 
@@ -15,7 +15,7 @@ class Category < ApplicationRecord
     if finances.empty?
       return true
     else
-      errors[:base] << "Can't be destroy because of finance actions exist"
+      errors[:base] << t('cant_be_destroy')
       throw :abort
       return false
     end

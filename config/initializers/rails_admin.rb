@@ -49,11 +49,31 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  ActiveRecord::Base.descendants.each do |imodel|
+    config.model "#{imodel.name}" do
+      list do
+        exclude_fields :created_at, :updated_at
+      end
+    end
+  end
+
   config.model 'User' do
-    include_fields :id, :name,:email, :admin, :last_sign_in_at
+    include_fields :id, :name, :email, :admin, :last_sign_in_at
 
     edit do
-      include_fields :password,:password_confirmation
+      include_fields :password, :password_confirmation
+    end
+
+    show do
+      include_all_fields
+    end
+  end
+
+  config.model 'Type' do
+    exclude_fields :created_at, :updated_at
+
+    edit do
+      include_fields :title
     end
 
     show do
