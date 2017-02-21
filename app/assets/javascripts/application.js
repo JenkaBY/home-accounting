@@ -15,10 +15,11 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap/custom
-//= require bootstrap
 //= require turbolinks
 //= require moment
+//= require bootstrap-sprockets
+//= require bootstrap
+//= require bootstrap/custom
 //= require bootstrap-datetimepicker
 //= require_tree .
 
@@ -32,22 +33,21 @@ document.addEventListener("turbolinks:load", function () {
 });
 
 // Bootstrap 3 Datepicker v4
-$(function () {
-    $('#datetimepicker_action_date,#datetimepicker_filter_start_date').datetimepicker({
+$(document).ready((function () {
+    $('#datetimepicker_action_date, #datetimepicker_filter_start_date').datetimepicker({
         format: DATE_FORMAT
     });
-});
+}));
 
 
-
-$(function () {
+$(document).ready((function () {
     $('#datetimepicker_startdate').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: DATE_FORMAT
     });
 
     $('#datetimepicker_enddate').datetimepicker({
-        useCurrent: false ,//Important! See issue #1075
-        format: 'YYYY-MM-DD'
+        useCurrent: false,//Important! See issue #1075
+        format: DATE_FORMAT
     });
 
     $("#datetimepicker_startdate").on("dp.change", function (e) {
@@ -56,5 +56,5 @@ $(function () {
     $("#datetimepicker_enddate").on("dp.change", function (e) {
         $('#datetimepicker_startdate').data("DateTimePicker").maxDate(e.date);
     });
-});
+}));
 

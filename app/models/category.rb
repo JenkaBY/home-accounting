@@ -15,7 +15,7 @@ class Category < ApplicationRecord
     if finances.empty?
       return true
     else
-      errors[:base] << t('cant_be_destroy')
+      errors[:base] << "Can't be destroy because of finance actions exist"
       throw :abort
       return false
     end

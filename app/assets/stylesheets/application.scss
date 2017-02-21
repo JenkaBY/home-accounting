@@ -17,16 +17,11 @@
 // "bootstrap-sprockets" must be imported before "bootstrap", "bootstrap/custom" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap/custom";
-@import 'bootstrap-sprockets';
+//@import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 //@import "bootstrap/theme";
 
-
-
-.mark {
-  background-color: greenyellow;
-}
 
 legend {
   font-size: small;

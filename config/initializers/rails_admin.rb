@@ -49,14 +49,6 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  ActiveRecord::Base.descendants.each do |imodel|
-    config.model "#{imodel.name}" do
-      list do
-        exclude_fields :created_at, :updated_at
-      end
-    end
-  end
-
   config.model 'User' do
     include_fields :id, :name, :email, :admin, :last_sign_in_at
 
@@ -80,6 +72,16 @@ RailsAdmin.config do |config|
       include_all_fields
     end
   end
+
+  config.model 'Finance' do
+    exclude_fields :created_at, :updated_at
+
+  end
+
+  config.model 'Category' do
+    exclude_fields :created_at, :updated_at
+  end
+
 
 end
 
