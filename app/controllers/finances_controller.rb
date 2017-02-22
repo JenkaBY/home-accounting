@@ -48,6 +48,7 @@ class FinancesController < ApplicationController
     respond_to do |format|
       if @finance.save
         format.html { redirect_to finances_path, notice: t('finance_created') }
+        format.js
         # format.json { render action: 'show', status: :created, location: @finance }
       else
         format.html { render action: 'show' }
@@ -69,9 +70,9 @@ class FinancesController < ApplicationController
   end
 
 
-  def filter
-    @filter_finance ||= filtered_finances
-  end
+  # def filter
+  #   @filter_finance ||= filtered_finances
+  # end
 
   private
 

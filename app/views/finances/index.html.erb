@@ -12,33 +12,9 @@
     <th></th>
   </tr>
   </thead>
-
-  <tbody>
-  <% @finances.each do |fin| %>
-      <tr>
-        <% @category = get_category(fin.category_id) %>
-        <td >
-          <% if @date != fin.action_date %>
-              <%= fin.action_date %>
-              <% @date = fin.action_date %>
-          <% end %>
-        </td>
-        <td><%= get_sign(@category)%><%= number_to_currency(fin.amount) %></td>
-        <td><%= @category.title %></br>
-          <small> <%= fin.description %> </small>
-        </td>
-        <td>
-          <%= link_to edit_finance_path(fin), :class => 'glyphicon glyphicon glyphicon-pencil icon-normal' do %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to fin, method: :delete, data: {confirm: t('confirmation')}, :class => 'glyphicon glyphicon-remove icon-danger' do %>
-          <% end %>
-        </td>
-      </tr>
-  <% end %>
-  </tbody>
+  <%= render @finance %>
 </table>
+
 <% if true %>
 <%= render 'finances/new' %>
 <% end %>

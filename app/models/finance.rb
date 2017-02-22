@@ -11,7 +11,7 @@ class Finance < ApplicationRecord
   scope :to_date,                             -> (date) { where( "finances.action_date <= ?", date) }
   scope :amount,                              -> (amount) {where( "finances.amount = ?", amount)}
   scope :description_or_category_title_like,  -> (keywords) {joins(:category)
-                                               .where( "finances.description LIKE ? OR categories.title LIKE ?" ,
+                                               .where( "LOWER(finances.description) LIKE ? OR LOWER(categories.title) LIKE ?" ,
                                                        "%#{keywords}%","%#{keywords}%")}
   scope :total,             -> { sum(:amount) }
 

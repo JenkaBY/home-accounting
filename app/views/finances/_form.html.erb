@@ -38,7 +38,7 @@
       <%= f.label t('category') %>
       <%= f.select(:category_id,
                    grouped_options_for_select(get_categories_grouped_by_type(current_user),
-                                              get_category_title_by_finance_id(params[:id])),
+                                              get_category_id_by_finance_id(params[:id])),
                    {include_blank: t('select_category')},
                    {required: 'true', class: 'form-control'}) %>
     </div>
@@ -51,7 +51,7 @@
         <% end %>
 
         <div class="btn-group">
-          <%= f.submit t('save'), class: 'btn btn-success btn-lg' %>
+          <%= f.submit t('save'), class: 'btn btn-success btn-lg',remote: true %>
         </div>
 
     </div>

@@ -11,7 +11,8 @@ module CategoriesHelper
   def get_user_category_types(user)
     user.categories.joins('INNER JOIN types ON categories.type_id = types.id')
         .select('types.title, categories.type_id')
-        .group(:type_id).collect { |cat| [cat.type_id, cat.title] }
+        .group('categories.type_id').group('types.title').collect { |cat| [cat.type_id, cat.title] }
+        # .group(:type_id).collect { |cat| [cat.type_id, cat.title] } this works on sqlite3 and doesn't work on PostrgeSQL
   end
 
   def get_categories_grouped_by_type(user)
@@ -35,7 +36,7 @@ module CategoriesHelper
     grouped_categories_by_type
   end
 
-  def get_category_title_by_finance_id(id)
+  def get_category_id_by_finance_id(id)
     if id != nil
       title = @finance.category_id
       return title
