@@ -16,12 +16,8 @@
 
 // "bootstrap-sprockets" must be imported before "bootstrap", "bootstrap/custom" and "bootstrap/variables"
 @import "bootstrap-sprockets";
-@import "bootstrap/custom";
-//@import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
-//@import "bootstrap/theme";
-
 
 legend {
   font-size: small;
@@ -30,3 +26,4 @@ legend {
 .icon-danger{
  color: palevioletred;
 }
+

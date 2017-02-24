@@ -11,7 +11,6 @@ class FinancesController < ApplicationController
     @finance = current_user.finances.new
     if search_params
       @finances = filtered_finances.order(action_date: :desc)
-      # @finances = current_user.finances.from_date(search_params[:from_date]).order(action_date: :desc)
     else
 
       month_ago = Time.now - 1.month
@@ -48,7 +47,6 @@ class FinancesController < ApplicationController
     respond_to do |format|
       if @finance.save
         format.html { redirect_to finances_path, notice: t('finance_created') }
-        format.js
         # format.json { render action: 'show', status: :created, location: @finance }
       else
         format.html { render action: 'show' }
@@ -68,11 +66,6 @@ class FinancesController < ApplicationController
   def get_finance
     @finance = current_user.finances.find(params[:id])
   end
-
-
-  # def filter
-  #   @filter_finance ||= filtered_finances
-  # end
 
   private
 

@@ -36,7 +36,7 @@ en:
   password_confirm: "Password confirmation"
   password: "Password"
   name: "Name"
-  placeholder_email: "hello@youremail.com"
+  placeholder_email: "your@email.com"
   email: "Email"
   min_charachter: "characters minimum"
   new_password: "New password"
@@ -98,6 +98,12 @@ en:
   income: "Income"
 #-------rails_admin------------
   not_perrmited: "You are not permitted to view admin page"
+#------devise -----------------
+  delete_account: "Delete account"
+  leave_blank: "leave blank if you don't want to change it"
+  new_password_confirm: "New password confirmation"
+  current_password: "Current password"
+  current_password_confirm: "we need your current password to confirm your changes"
 
 
 

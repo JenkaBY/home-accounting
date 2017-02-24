@@ -28,10 +28,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if get_category.update(category_params)
         format.html { redirect_to categories_path, notice: t('category_updated') }
-        format.json { head :no_content }
+        # format.json { head :no_content }
       else
         format.html { render action: 'show' }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        # format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       unless Category.exists?(id: params[:id])
         format.html { redirect_to categories_path, notice: t('category_removed') }
-        format.json { head :no_content }
+        # format.json { head :no_content }
       else
         format.html { redirect_to categories_path, alert: t('cant_be_destroy') }
       end
