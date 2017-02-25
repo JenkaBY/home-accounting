@@ -13,6 +13,8 @@ class Finance < ApplicationRecord
   scope :description_or_category_title_like,  -> (keywords) {joins(:category)
                                                .where( "LOWER(finances.description) LIKE ? OR LOWER(categories.title) LIKE ?" ,
                                                        "%#{keywords}%","%#{keywords}%")}
-  scope :total,             -> { sum(:amount) }
+  scope :total,                               -> { sum(:amount) }
+  scope :group_by_category_sum_amount,        -> { group(:category_id)
+                                                      .select('finances.category_id, sum(finances.amount) as amount') }
 
  end

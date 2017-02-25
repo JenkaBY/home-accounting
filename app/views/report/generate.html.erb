@@ -1,25 +1,22 @@
-<h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %> - <%= @end_date %></h4>
+<h4 class="text-center"> <%= t('finance_report') %> <%= period(@start_date, @end_date) %></h4>
 <%= render 'report/all' %>
 
-<% @type_id.each do |type| %>
+<% @types.each do |type_id| %>
 
-    <% if type == Type::INCOME %>
+    <h4 class="text-center"> <%= t('grouped_by') %> <%=  get_type_title(type_id).downcase %> <%= t('categories') %></h4>
+
+    <% if type_id == Type::INCOME %>
         <% @categories = @categories_income %>
         <% @finances_current = @total_income_period %>
-
-        <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
-          - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('income') %>) </h4>
-
         <%= render 'report/bytype' %>
     <% end %>
 
-    <% if type == Type::EXPENSE %>
+    <% if type_id == Type::EXPENSE %>
         <% @categories = @categories_expense %>
         <% @finances_current = @total_expense_period %>
-        <h4 class="text-center"> <%= t('finance_report') %> <%= @start_date %>
-          - <%= @end_date %> <%= t('grouped_by') %> <%= t('category') %>(<%= t('expense') %>)  </h4>
-
         <%= render 'report/bytype' %>
     <% end %>
 
 <% end %>
+
+<%= link_to t('new_report'), new_report_path, class: 'back btn btn-primary btn-lg' %>

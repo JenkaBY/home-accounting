@@ -8,7 +8,7 @@
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
         </span>
-            <%= text_field :report, :start_date, class: 'form-control span2', :value => (Time.now - 1.month) %>
+            <%= text_field :report, :start_date, class: 'form-control span2', :value => ReportHelper::MONTH_AGO %>
 
           </div>
         </div>
@@ -21,24 +21,19 @@
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
-            <%= text_field :report, :end_date, class: 'form-control span2', :value => Time.now %>
+            <%= text_field :report, :end_date, class: 'form-control span2', :value => ReportHelper::TODAY %>
           </div>
         </div>
       </div>
 
 
       <div class="input-group">
-        <div class="col-md-12">
-          <h5><strong><%= t('choose_type') %></strong></h5>
-          <%= collection_check_boxes(:report, :type_id, Type.all, :id, :title, {}, {:class => 'checkbox'}) do |b| %>
-              <% b.label(:'data-value' => b.value, class: 'checkbox-inline control-label') { b.check_box + b.text } %>
-          <% end %>
-        </div>
-      </div>
 
         <div class="btn center-block">
           <%= submit_tag t('generate'), class: 'btn btn-primary btn-lg' %>
         </div>
+
+      </div>
 
     </form>
 

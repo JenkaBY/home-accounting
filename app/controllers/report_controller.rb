@@ -5,25 +5,23 @@ class ReportController < ApplicationController
 
   def generate
 
-    @start_date  = params[:report][:start_date]
-    @end_date     = params[:report][:end_date]
-    @type_id      = processing_array params[:report][:type_id]
+    @start_date = params[:report][:start_date]
+    @end_date = params[:report][:end_date]
 
     finances = current_user.finances.from_date(@start_date).to_date(@end_date)
-
-    @finances_for_period  = finances.order(:action_date, :category_id)
-    @total_income_period  = @finances_for_period.income.total
+    @types = finances.joins(:category).select('DISTINCT categories.type_id').collect { |cat| cat.type_id }
+    puts @types
+    @finances_for_period = finances.order(:action_date, :category_id)
+    @total_income_period = @finances_for_period.income.total
     @total_expense_period = @finances_for_period.expense.total
 
 
-    if @type_id.include?(Type::INCOME)
-      @categories_income = finances.income.group(:category_id)
-                               .select('finances.category_id, sum(finances.amount) as amount')
+    if @types.include?(Type::INCOME)
+      @categories_income = finances.income.group_by_category_sum_amount
     end
 
-    if @type_id.include?(Type::EXPENSE)
-      @categories_expense = finances.expense.group(:category_id)
-                                .select('finances.category_id, sum(finances.amount) as amount')
+    if @types.include?(Type::EXPENSE)
+      @categories_expense = finances.expense.group_by_category_sum_amount
     end
 
   end
@@ -34,13 +32,8 @@ class ReportController < ApplicationController
 
   private
 
-  def processing_array array
-    array.delete ''
-    array.map! { |el| el.to_i }
-  end
-
   def report_params
-    params.require(:report).permit(:start_date, :end_date, :type_id, :category_id)
+    params.require(:report).permit(:start_date, :end_date)
   end
 
 end

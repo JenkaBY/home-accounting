@@ -1,34 +1,3 @@
 <% @index_cat = true %>
-<table class="table table-striped table-condensed">
-  <thead class="thead">
-  <tr>
-    <th><%= t('type') %></th>
-    <th><%= t('category') %></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @categories.each do |category| %>
-      <tr>
-        <td>
-          <% if @type != Type.find(category.type_id).title %>
-              <%= Type.find(category.type_id).title %>
-              <% @type = Type.find(category.type_id).title %>
-          <% end %>
-        </td>
-        <td><%= category.title %></td>
-        <td>
-          <%= link_to edit_category_path(category), :class => 'glyphicon glyphicon glyphicon-pencil icon-normal' do %>
-          <% end %>
-        </td>
-        <td>
-                <%= link_to category, method: :delete, data: {confirm: t('confirmation')}, :class => 'glyphicon glyphicon-remove icon-danger' do %>
-                <% end %>
-        </td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render 'categories/table' %>
 <%= render 'categories/new' %>

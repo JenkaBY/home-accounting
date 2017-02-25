@@ -8,6 +8,7 @@ module CategoriesHelper
     Type.all.collect { |type| [type.title, type.id] }
   end
 
+
   def get_user_category_types(user)
     user.categories.joins('INNER JOIN types ON categories.type_id = types.id')
         .select('types.title, categories.type_id')

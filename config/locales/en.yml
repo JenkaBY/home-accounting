@@ -1,24 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   application_name: "Home Accounting"
   welcome_to: "Welcome to the Home Accounting"
@@ -28,6 +7,7 @@ en:
   dashboard: "Dashboard"
   report: "Report"
   category: "Category"
+  categories: "categories"
   setting: "Setting"
   log_out: "Log out"
   log_in: "Log in"
@@ -81,7 +61,7 @@ en:
   cant_be_destroy: "Can't be destroy because of finance actions exist"
   cant_by_destroy_type: "Can't be destroy because of categories exist"
 #  -------Report--------
-  parameter_report: "Choose parameters to generate report"
+  parameter_report: "Choose period to generate report"
   choose_type: "Choose types of category"
   choose_category: "Choose category"
   generate: "Generate"
@@ -92,10 +72,11 @@ en:
   total_income: "Total income"
   total_expense: "Total expense"
   percent: "Percent,%"
-  finance_report: "Finance report at"
-  grouped_by: "grouped by "
+  finance_report: "Finance report "
+  grouped_by: "Grouped by "
   expense: "Expense"
   income: "Income"
+  new_report: "New report"
 #-------rails_admin------------
   not_perrmited: "You are not permitted to view admin page"
 #------devise -----------------
