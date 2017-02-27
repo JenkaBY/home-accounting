@@ -1,7 +1,7 @@
 <%= form_for(@finance) do |f| %>
     <% if @finance.errors.any? %>
         <div id="alert alert-warning">
-          <h2><%= pluralize(@finance.errors.count, t('error')) %> <%= t('error.finances.text_alert') %>:</h2>
+          <h2><%= pluralize(@finance.errors.count, t('error')) %> <%= t('text_alert') %>:</h2>
 
           <ul>
             <% @finance.errors.full_messages.each do |msg| %>
