@@ -8,7 +8,6 @@ class Type < ApplicationRecord
     if self.categories.empty?
       return true
     else
-      # errors[:base] << t('cant_be_destroy')
       throw :abort
       return false
     end

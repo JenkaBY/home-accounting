@@ -8,7 +8,17 @@ class ReportController < ApplicationController
     @start_date = params[:report][:start_date]
     @end_date = params[:report][:end_date]
 
-    finances = current_user.finances.from_date(@start_date).to_date(@end_date)
+    finances = current_user.finances
+
+    unless @start_date.blank?
+      finances = finances.from_date(@start_date)
+    end
+
+    unless @end_date.blank?
+      finances = finances.to_date(@end_date)
+    end
+
+    # finances = current_user.finances.from_date(@start_date).to_date(@end_date)
     @types = finances.joins(:category).select('DISTINCT categories.type_id').collect { |cat| cat.type_id }
     puts @types
     @finances_for_period = finances.order(:action_date, :category_id)

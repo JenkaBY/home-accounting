@@ -2,7 +2,6 @@ class FinancesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_finance
 
   def new
-    # @finance = current_user.finances.new
     redirect_to finances_path
   end
 
@@ -34,10 +33,8 @@ class FinancesController < ApplicationController
     respond_to do |format|
       if get_finance.update(finance_params)
         format.html { redirect_to finances_path, notice: t('finance_updated') }
-        # format.json { head :no_content }
       else
         format.html { render action: 'show' }
-        # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +44,8 @@ class FinancesController < ApplicationController
     respond_to do |format|
       if @finance.save
         format.html { redirect_to finances_path, notice: t('finance_created') }
-        # format.json { render action: 'show', status: :created, location: @finance }
       else
         format.html { render action: 'show' }
-        # format.json { render json: @finance.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,7 +54,6 @@ class FinancesController < ApplicationController
     get_finance.destroy
     respond_to do |format|
       format.html { redirect_to finances_path, notice: t('finance_removed') }
-      # format.json { head :no_content }
     end
   end
 
@@ -75,7 +69,7 @@ class FinancesController < ApplicationController
 
   def invalid_finance
     logger.error "Attempt to access invalid finance #{params[:id]} by user #{current_user.id}"
-    redirect_to finances_path, notice: t('invalid_action')
+    redirect_to finances_path, alert: t('invalid_action')
   end
 
 #   filtering

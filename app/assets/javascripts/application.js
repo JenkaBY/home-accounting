@@ -17,6 +17,12 @@ document.addEventListener("turbolinks:load", function () {
     $('a[href="' + location.pathname + '"]').parent('li').addClass('active');
 });
 
+$(document).on('page:change', function(){
+    $(".flash").delay(2000).slideUp(500, function(){
+        $(".flash").alert('close');
+    });
+});
+
 moment.updateLocale('en', {
     week: { dow: 1 }
 })

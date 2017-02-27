@@ -6,8 +6,7 @@ class Category < ApplicationRecord
 
   validates :type_id, :title, presence: true
   scope :categories_with_type, -> ( type_id ) { where(type_id: type_id) }
-  scope :income_finances,   -> { where(type_id: Type::INCOME).joins(:finances) }
-  scope :expense_finances,  -> { where(type_id: Type::EXPENSE).joins(:finances) }
+
 
   private
 
@@ -15,7 +14,6 @@ class Category < ApplicationRecord
     if finances.empty?
       return true
     else
-      # errors[:base] << "Can't be destroy because of finance actions exist"
       throw :abort
       return false
     end
