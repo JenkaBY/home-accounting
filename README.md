@@ -19,4 +19,4 @@ User categories are not shared for another user.
 * pg 				version 0.19.0
 * PostgreSQL		version 9.6
 
-The application are deployed on [Heroku](https://home-accounting.herokuapp.com)
+The application is deployed on [Heroku](https://home-accounting.herokuapp.com)
