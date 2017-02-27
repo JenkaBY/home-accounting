@@ -1,24 +1,22 @@
-# README
+# Home Accounting is the personal income/expense tracking application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It keeps personal expenses and incomes grouped by categories. Each user can create the personal categories which are belong proper type (Expense or Income). After creating categories on the Category page, user could create any finace action belonged the created categories.
+By default on the Accounting page, the finance actions are showed only the last month (about 30 days). But there is possible to show any finance operation using the filter parameters on the top of the Accounting page.
 
-Things you may want to cover:
+The current user balance is showed in the header on every page. It is calculated by all finance operations.
 
-* Ruby version
+A simple report for any period could be generated on the Report tab.
 
-* System dependencies
+User categories aren't shared for another users.
 
-* Configuration
+### Main used gems and DB, ruby version... 
 
-* Database creation
+* Ruby 				version 2.2.6
+* Rails 			version 5.0.1
+* Devise 			version 4.2.0 	for simple registriation
+* Rails admin 		version 1.1.1	for managment user and user data
+* bootstrap-sass 	version 3.3.7	for design of applicatoin
+* pg 				version 0.19.0
+* PostgreSQL		version 9.6
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Application are deployed on [Heroku](https://home-accounting.herokuapp.com)
