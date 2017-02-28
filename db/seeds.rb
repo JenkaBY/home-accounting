@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Type.delete_all
+
+expense_type = Type.create({id: 1, title: 'Expense'})
+income_type  = Type.create({id: 2, title: 'Income'})

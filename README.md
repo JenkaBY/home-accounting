@@ -13,10 +13,24 @@ User categories are not shared for another user.
 
 * Ruby 				version 2.2.6
 * Rails 			version 5.0.1
-* Devise 			version 4.2.0 	for simple registriation
-* Rails admin 		version 1.1.1	for managment user and user data
-* bootstrap-sass 	version 3.3.7	for design of applicatoin
+* Devise 			version 4.2.0 	for simple registration
+* Rails admin 		version 1.1.1	for management user and user data
+* bootstrap-sass 	version 3.3.7	for design of application
 * pg 				version 0.19.0
 * PostgreSQL		version 9.6
+
+### Installation guide
+
+0. You should have the installed Ruby and Rails version specified above.
+1. PostgreSQL should be installed too.
+2. Create the 'test' role with password 'test' in your DB. Or you can change username and password on the database.yml file according to role existing in your DB.
+3. The next what you need to do is the running in specified order following commands: 
+ - bundle install
+ - rails db:setup
+ - rails db:seed
+4. Now time is up to run the rails server:
+ - rails s
+5. If you would create an user for administrating in your application, you should manually set 'true' in "users.admin" column of any registered user.
+6. Enjoy!
 
 The application is deployed on [Heroku](https://home-accounting.herokuapp.com)
