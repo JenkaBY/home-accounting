@@ -10,30 +10,18 @@ class ReportController < ApplicationController
 
     finances = current_user.finances
 
-    unless @start_date.blank?
-      finances = finances.from_date(@start_date)
-    end
+    finances = finances.from_date(@start_date) unless @start_date.blank?
 
-    unless @end_date.blank?
-      finances = finances.to_date(@end_date)
-    end
+    finances = finances.to_date(@end_date) unless @end_date.blank?
 
-    # finances = current_user.finances.from_date(@start_date).to_date(@end_date)
     @types = finances.joins(:category).select('DISTINCT categories.type_id').collect { |cat| cat.type_id }
     puts @types
-    @finances_for_period = finances.order(:action_date, :category_id)
-    @total_income_period = @finances_for_period.income.total
+    @finances_for_period  = finances.order(:action_date, :category_id)
+    @total_income_period  = @finances_for_period.income.total
     @total_expense_period = @finances_for_period.expense.total
 
-
-    if @types.include?(Type::INCOME)
-      @categories_income = finances.income.group_by_category_sum_amount
-    end
-
-    if @types.include?(Type::EXPENSE)
-      @categories_expense = finances.expense.group_by_category_sum_amount
-    end
-
+    @categories_income  = finances.income.group_by_category_sum_amount if @types.include?(Type::INCOME)
+    @categories_expense = finances.expense.group_by_category_sum_amount if @types.include?(Type::EXPENSE)
   end
 
   def report_get

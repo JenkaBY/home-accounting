@@ -3,13 +3,13 @@
 It keeps personal expenses and incomes grouped by categories. Each user can create the personal categories which are belong proper type (Expense or Income). After creating categories on the Category page, user could create any finance action belonged the created categories.
 By default on the Accounting page, the finance actions are showed only the last month (about 30 days). However, there is possible to show any finance operation using the filter parameters on the top of the Accounting page.
 
-The current user balance is showed in the header on every page. It is calculated by all finance operations.
+The current user balance is displayed in the header on every page. It is calculated by all finance operations.
 
 A simple report for any period could be generated on the Report tab.
 
 User categories are not shared for another user.
 
-### Main used gems and DB, ruby version...
+### Ruby version, main used gems and DB version...
 
 * Ruby 				version 2.2.6
 * Rails 			version 5.0.1
@@ -21,9 +21,9 @@ User categories are not shared for another user.
 
 ### Installation guide
 
-0. You should have the installed Ruby and Rails version specified above.
+0. You should have the installed Ruby and Rails versions specified above.
 1. PostgreSQL should be installed too.
-2. Create the 'test' role with password 'test' in your DB. Or you can change username and password on the database.yml file according to role existing in your DB.
+2. Create the 'test' role with password 'test' in your DB. Or you can change username and password on the database.yml file according to the``__`` role existing in your DB.
 3. The next what you need to do is the running in specified order following commands: 
  - bundle install
  - rails db:setup

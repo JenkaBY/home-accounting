@@ -82,23 +82,15 @@ class FinancesController < ApplicationController
     keywords = params[:search][:keywords]
     finances = current_user.finances
 
-    unless from_date.blank?
-      finances = finances.from_date(from_date)
-    end
+    finances = finances.from_date(from_date) unless from_date.blank?
 
-    unless to_date.blank?
-      finances = finances.to_date(to_date)
-    end
+    finances = finances.to_date(to_date) unless to_date.blank?
 
-    unless amount.blank?
-      finances = finances.amount(amount.to_f)
-    end
+    finances = finances.amount(amount.to_f) unless amount.blank?
 
-    unless keywords.blank?
-      finances = finances.description_or_category_title_like(keywords.mb_chars.downcase.to_s)
-    end
+    finances = finances.description_or_category_title_like(keywords.mb_chars.downcase.to_s) unless keywords.blank?
 
-   finances
+    finances
   end
 
 
