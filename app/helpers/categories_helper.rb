@@ -42,7 +42,7 @@ module CategoriesHelper
       title = @finance.category_id
       return title
     end
-    nil
+    @selected_category_id
   end
 
 end

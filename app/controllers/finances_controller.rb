@@ -45,6 +45,7 @@ class FinancesController < ApplicationController
       if @finance.save
         format.html { redirect_to finances_path, notice: t('finance_created') }
       else
+        @selected_category_id = params[:finance][:category_id]
         format.html { render action: 'show' }
       end
     end
@@ -64,7 +65,13 @@ class FinancesController < ApplicationController
   private
 
   def finance_params
-    params.require(:finance).permit(:action_date, :amount, :category_id, :description, :user_id, :search)
+    params.require(:finance)
+        .permit(:action_date,
+                :amount,
+                :category_id,
+                :description,
+                :user_id,
+                :search => [:from_date, :to_date, :amount, :keywords])
   end
 
   def invalid_finance
